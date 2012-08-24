@@ -18,6 +18,8 @@ package
 		{
 			super(320, 240, 60, false);
 			FP.screen.scale = 2;
+			
+			FP.console.enable();
 		}	
 		
 		override public function init():void 

@@ -14,7 +14,7 @@ package worlds
 	 */
 	public class MainMenu extends World 
 	{
-		protected var clickToPlay:Entity;
+		protected var activeMenuItem:int = 0;
 		
 		public function MainMenu() 
 		{
@@ -22,29 +22,60 @@ package worlds
 		}
 		
 		override public function begin():void 
-		{
-			var clickText:Text = new Text("Click to Play");
-			clickText.color = 0x000000;
-			clickToPlay = new Entity(FP.screen.width/2 - 50, FP.screen.height - 30, clickText);
-			
-			add(new Entity(0, 0, new Image(GC.MAINMENU)));
-			add(clickToPlay);
+		{	
 			super.begin();
+			add(new Entity(0, 0, new Image(GC.MAINMENU)));
+			
+			// Define Input
+			Input.define("menuUp", Key.W, Key.UP);
+			Input.define("menuDown", Key.S, Key.DOWN);
+			Input.define("menuSelect", Key.SPACE, Key.ENTER, Key.NUMPAD_ENTER);
+		
+			// Build Menu
+			buildMenu();
 		}
 		
 		override public function update():void 
 		{
-			if (Input.mouseReleased)
+			super.update();
+		
+			if (Input.pressed("menuUp")) changeItem("menuUp");
+			if (Input.pressed("menuDown")) changeItem("menuDown");
+		}
+		
+		public function changeItem(inp:String):void
+		{
+			if (inp == "menuUp") 
 			{
-				trace("mouse released");
+				activeMenuItem -= 1;
+				if (activeMenuItem < 0) activeMenuItem = 0;
 			}
 			
-			else if (Input.mousePressed)
+			if (inp == "menuDown")
 			{
-				trace("mouse Pressed");
-				FP.world = new GameWorld();
+				activeMenuItem += 1;
+				if (activeMenuItem > this.typeCount("menuEntity")-1 ) activeMenuItem = this.typeCount("menuEntity")-1;
 			}
-			super.update();
+			buildMenu();
+		}
+		
+		public function buildMenu():void
+		{
+			var garbageList:Array = new Array();
+			this.getType("menuEntity", garbageList);
+			this.removeList(garbageList);
+			
+			for each(var mItem:String in GC.MENU_ITEMS)
+			{
+				var curText:Text = new Text(mItem);
+				
+				if (GC.MENU_ITEMS.indexOf(mItem) == activeMenuItem) curText.color = uint(GC.MENU_COLOR_ACTIVE);
+				else curText.color = uint(GC.MENU_COLOR);
+				
+				var curItem:Entity = new Entity(FP.halfWidth - 50, GC.MENU_ITEMS.indexOf(mItem) * 25 + FP.halfHeight, curText);
+				curItem.type = "menuEntity";
+				add(curItem);
+			}
 		}
 		
 	}
