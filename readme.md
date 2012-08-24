@@ -2,16 +2,11 @@ Reustonium's LD24 Entry
 =======================
 Version History
 ---------------
-0.0.0	08/23/12-21:58
-
 <table>
   <tr>
-    <th>ID</th><th>Name</th><th>Rank</th>
+    <th>Version</th><th>Date</th><th>Time</th><th>Changelog</th>
   </tr>
   <tr>
-    <td>1</td><td>Tom Preston-Werner</td><td>Awesome</td>
-  </tr>
-  <tr>
-    <td>2</td><td>Albert Einstein</td><td>Nearly as awesome</td>
+    <td>0.0.0</td><td>08/23/12</td><td>20:12</td><td>[Fixed] Readme.md</td>
   </tr>
 </table>
