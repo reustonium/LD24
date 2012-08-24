@@ -17,7 +17,7 @@ package
 		public function Main():void 
 		{
 			super(320, 240, 60, false);
-			FP.screen.scale = 2;
+			FP.screen.scale = GC.SCREEN_SCALE;
 			
 			FP.console.enable();
 		}	

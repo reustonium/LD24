@@ -9,4 +9,10 @@ Version History
   <tr>
     <td>0.0.0</td><td>08/23/12</td><td>20:12</td><td>[Fixed] Readme.md</td>
   </tr>
+  <tr>
+    <td rowspan="2">0.0.140</td><td>08/24/12</td><td>16:11</td><td>[Added] New Font Support</td>
+  </tr>
+  <tr>
+	<td>a</td><td>b</td><td>c</td><td>d</td>
+  </tr
 </table>

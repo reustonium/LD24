@@ -67,13 +67,16 @@ package worlds
 			
 			for each(var mItem:String in GC.MENU_ITEMS)
 			{
-				var curText:Text = new Text(mItem);
+				Text.font = 'primma';
+				Text.size = 36;
+				var curText:Text = new Text(mItem.toUpperCase());
 				
 				if (GC.MENU_ITEMS.indexOf(mItem) == activeMenuItem) curText.color = uint(GC.MENU_COLOR_ACTIVE);
 				else curText.color = uint(GC.MENU_COLOR);
 				
-				var curItem:Entity = new Entity(FP.halfWidth - 50, GC.MENU_ITEMS.indexOf(mItem) * 25 + FP.halfHeight, curText);
+				var curItem:Entity = new Entity(FP.halfWidth - 50, GC.MENU_ITEMS.indexOf(mItem) * 35 + FP.halfHeight, curText);
 				curItem.type = "menuEntity";
+				curItem.setHitbox(curText.width, curText.height, 0, 0);
 				add(curItem);
 			}
 		}
