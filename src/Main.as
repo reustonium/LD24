@@ -25,5 +25,6 @@ package
 			FP.world = new MainMenu();
 			super.init();
 		}
+
 	}
 }

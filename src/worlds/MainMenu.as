@@ -5,6 +5,8 @@ package worlds
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.graphics.Text;
 	import net.flashpunk.World;
+	import net.flashpunk.utils.Input;
+	import net.flashpunk.utils.Key;
 	
 	/**
 	 * @project LD24
@@ -28,6 +30,21 @@ package worlds
 			add(new Entity(0, 0, new Image(GC.MAINMENU)));
 			add(clickToPlay);
 			super.begin();
+		}
+		
+		override public function update():void 
+		{
+			if (Input.mouseReleased)
+			{
+				trace("mouse released");
+			}
+			
+			else if (Input.mousePressed)
+			{
+				trace("mouse Pressed");
+				FP.world = new GameWorld();
+			}
+			super.update();
 		}
 		
 	}
