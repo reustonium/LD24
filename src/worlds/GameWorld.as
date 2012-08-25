@@ -1,6 +1,7 @@
 package worlds 
 {
 	import actors.Player;
+	import actors.Tree;
 	import net.flashpunk.Entity;
 	import net.flashpunk.FP;
 	import net.flashpunk.graphics.Image;
@@ -26,6 +27,11 @@ package worlds
 			add(new Entity(0, FP.height - 50, GC.ground = new Ground()));
 			add(new Player(130, 300));
 			add(new Floor(0, FP.height - 50));
+			
+			// Make Tree's
+			var smallTree:Tree = new Tree(300, FP.height - 50 - 64);
+			GC.treeList.push(smallTree);
+			add(smallTree);
 		}
 		
 		override public function update():void 

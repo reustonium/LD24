@@ -8,6 +8,10 @@ Version History
   </tr>
   
   <tr>
+    <td>0.4.17</td><td>08/25/12</td><td>12:07</td><td>[Added] Tree's with Scrolling</td>
+  </tr>
+  
+  <tr>
     <td>0.3.6</td><td>08/25/12</td><td>11:33</td><td>[Added] Scrolling Feature</td>
   </tr>
   

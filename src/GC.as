@@ -23,6 +23,8 @@ package
 		public static const IMAGE_GROUND:Class;
 		[Embed(source = 'assets/player.png')] 
 		public static const IMAGE_PLAYER:Class;
+		[Embed(source = 'assets/tree.png')] 
+		public static const IMAGE_TREE:Class;
 		
 		// Fonts
 		[Embed(source = 'assets/primma.ttf', embedAsCFF = "false", fontFamily = 'primma')]
@@ -38,5 +40,8 @@ package
 		public static var ground:Ground;
 		public static const gravity:Number = 0.5;
 		public static const moveSpeed:Number = 0.15;
+		
+		// Entities List
+		public static var treeList:Array = new Array();
 	}
 }

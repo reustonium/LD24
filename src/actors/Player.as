@@ -69,12 +69,20 @@ package actors
 				else { speed.y = 0; }
 			}
 			
-			// Scroll Backdrops
+			// Scroll Backdrops and Entities
 			if (x > FP.width - 200 || x < 100)
 			{
+				// Backdrops and Player
 				GC.sky.x -= speed.x;
 				GC.ground.x -= speed.x;
 				x -= speed.x;
+				
+				trace(GC.treeList);
+				
+				for each(var tree:Tree in GC.treeList)
+				{
+					tree.x -= speed.x;
+				}
 			}
 		}
 	}
