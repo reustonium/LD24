@@ -24,7 +24,7 @@ package worlds
 		override public function begin():void 
 		{	
 			super.begin();
-			add(new Entity(0, 0, new Image(GC.MAINMENU)));
+			add(new Entity(0, 0, new Image(GC.IMAGE_MAINMENU)));
 			
 			// Define Input
 			Input.define("menuUp", Key.W, Key.UP);
@@ -41,6 +41,7 @@ package worlds
 		
 			if (Input.pressed("menuUp")) changeItem("menuUp");
 			if (Input.pressed("menuDown")) changeItem("menuDown");
+			if (Input.pressed("menuSelect")) selectItem(activeMenuItem);
 		}
 		
 		public function changeItem(inp:String):void
@@ -59,6 +60,11 @@ package worlds
 			buildMenu();
 		}
 		
+		public function selectItem(item:int):void
+		{
+			if (item == 0) FP.world = new GameWorld();
+		}
+		
 		public function buildMenu():void
 		{
 			var garbageList:Array = new Array();
@@ -68,13 +74,13 @@ package worlds
 			for each(var mItem:String in GC.MENU_ITEMS)
 			{
 				Text.font = 'primma';
-				Text.size = 36;
+				Text.size = 48;
 				var curText:Text = new Text(mItem.toUpperCase());
 				
 				if (GC.MENU_ITEMS.indexOf(mItem) == activeMenuItem) curText.color = uint(GC.MENU_COLOR_ACTIVE);
 				else curText.color = uint(GC.MENU_COLOR);
 				
-				var curItem:Entity = new Entity(FP.halfWidth - 50, GC.MENU_ITEMS.indexOf(mItem) * 35 + FP.halfHeight, curText);
+				var curItem:Entity = new Entity(FP.halfWidth - 70, GC.MENU_ITEMS.indexOf(mItem) * 45 + FP.halfHeight, curText);
 				curItem.type = "menuEntity";
 				curItem.setHitbox(curText.width, curText.height, 0, 0);
 				add(curItem);

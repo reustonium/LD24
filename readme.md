@@ -14,5 +14,8 @@ Version History
   </tr
   <tr>
     <td>0.0.143</td><td>08/24/12</td><td>16:42</td><td>[Added] HTML Code to Host Game</td>
+  </tr>
+    <tr>
+    <td>0.1.27</td><td>08/25/12</td><td>01:10</td><td>[Fixed] Menu BG Screen <br/> [Added] Game World Class and basic Game World elements. <br/> [Added] Basic Player Motion.</td>
   </tr
 </table>
