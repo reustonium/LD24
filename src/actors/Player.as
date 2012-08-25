@@ -16,8 +16,11 @@ package actors
 	{
 		protected var playerImage:Image;
 		protected var speed:Point = new Point(0, 0);
-		protected var jumpPower:Number = -10;
+		protected var jumpPower:Number = -3;
 		protected var maxSpeed:Number = 3;
+		protected var canFly:Boolean = false;
+		protected var flyTime:Number = 1;
+		protected var flyTimer:Number = 0;
 		
 		public function Player(x:int, y:int) 
 		{
@@ -56,9 +59,23 @@ package actors
 			if (!collide('floor', x, y + 1)) { speed.y += GC.gravity; }
 			
 			// Allow Jumping only if on the floor
-			if (collide('floor', x, y + 1))
+			if (!canFly) 
 			{
-				if (Input.check('jump')) { speed.y = jumpPower;}
+				if (collide('floor', x, y + 1))
+				{
+					if (Input.check('jump')) { speed.y = jumpPower; }
+				}
+			}
+			if (canFly) 
+			{ 
+				if (Input.check('jump') && (flyTimer < flyTime)) 
+				{ 
+					speed.y = jumpPower;
+					flyTimer += FP.elapsed;
+				}
+				
+				if (collide('floor', x, y + 1)) { flyTimer = 0;}
+				
 			}
 			
 			// Ground Friction
@@ -87,16 +104,15 @@ package actors
 				
 				trace(GC.treeList);
 				
-				for each(var tree:Tree in GC.treeList)
-				{
-					tree.x -= speed.x;
-				}
+				for each(var tree:Tree in GC.treeList){ tree.x -= speed.x; }
 			}
 		}
 		
 		public function mated(mate:String):void
 		{
-			trace('you had sex, hehehe');
+			trace(mate);
+			if (mate == 'Monkey') { jumpPower -= 4; }
+			if (mate == 'Bird') { canFly = true; } 
 		}
 	}
 }

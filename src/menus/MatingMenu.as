@@ -51,7 +51,8 @@ package menus
 			}
 			if (Input.pressed('menuSelect'))
 			{
-				GC.player.mated(menuOptions[activeSelection]);
+				var temp:Text = menuOptions[activeSelection];
+				GC.player.mated(temp.text);
 				FP.world.remove(this);
 			}
 		}
