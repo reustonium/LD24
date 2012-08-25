@@ -13,7 +13,7 @@ package worlds
 	 */
 	public class GameWorld extends World 
 	{
-		protected var sky:Entity;
+	
 		
 		public function GameWorld() 
 		{
@@ -25,13 +25,16 @@ package worlds
 			super.begin();
 			add(new Entity(0, 0, GC.sky = new Sky()));
 			add(new Entity(0, FP.height - 50, GC.ground = new Ground()));
-			add(new Player(130, 300));
+			add(GC.player = new Player(130, 100));
 			add(new Floor(0, FP.height - 50));
 			
 			// Make Tree's
-			var smallTree:Tree = new Tree(300, FP.height - 50 - 64);
-			GC.treeList.push(smallTree);
-			add(smallTree);
+			for (var i:int; i < 5; i++)
+			{
+				var smallTree:Tree = new Tree(100 + 200*i, FP.height - 50 - 64);
+				GC.treeList.push(smallTree);
+				add(smallTree);
+			}
 		}
 		
 		override public function update():void 

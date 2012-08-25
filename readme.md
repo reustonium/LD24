@@ -8,6 +8,9 @@ Version History
   </tr>
   
   <tr>
+    <td>0.5.28</td><td>08/25/12</td><td>13:35</td><td>[Added] Added Mating Menu</td>
+  </tr>
+  <tr>
     <td>0.4.17</td><td>08/25/12</td><td>12:07</td><td>[Added] Tree's with Scrolling</td>
   </tr>
   

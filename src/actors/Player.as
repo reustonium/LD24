@@ -1,6 +1,7 @@
 package actors 
 {
 	import flash.geom.Point;
+	import menus.MatingMenu;
 	import net.flashpunk.Entity;
 	import net.flashpunk.FP;
 	import net.flashpunk.graphics.Image;
@@ -26,11 +27,18 @@ package actors
 			Input.define('moveLeft', Key.LEFT, Key.A);
 			Input.define('moveRight', Key.RIGHT, Key.D);
 			Input.define('jump', Key.W, Key.UP);
+			Input.define('mate', Key.M);
 		}
 		
 		override public function update():void 
 		{
 			super.update();
+			
+			// Check for Mating
+			if (FP.world.classCount(MatingMenu) == 0 )
+			{
+				if (Input.pressed('mate')) { new MatingMenu()}
+			}
 			
 			// Check for player left/right movement
 			if (Input.check('moveLeft')) 
@@ -84,6 +92,11 @@ package actors
 					tree.x -= speed.x;
 				}
 			}
+		}
+		
+		public function mated(mate:String):void
+		{
+			trace('you had sex, hehehe');
 		}
 	}
 }

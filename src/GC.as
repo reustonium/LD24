@@ -1,5 +1,6 @@
 package  
 {
+	import actors.Player;
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Text;
 	import net.flashpunk.utils.Data;
@@ -25,6 +26,8 @@ package
 		public static const IMAGE_PLAYER:Class;
 		[Embed(source = 'assets/tree.png')] 
 		public static const IMAGE_TREE:Class;
+		[Embed(source = 'assets/mm_bg.png')] 
+		public static const IMAGE_MM_BG:Class;
 		
 		// Fonts
 		[Embed(source = 'assets/primma.ttf', embedAsCFF = "false", fontFamily = 'primma')]
@@ -36,6 +39,7 @@ package
 		public static const MENU_ITEMS:Array = ["Play Game", "About Game", "Game Options"];
 		
 		// Game Constants
+		public static var player:Player;
 		public static var sky:Sky;
 		public static var ground:Ground;
 		public static const gravity:Number = 0.5;
@@ -43,5 +47,8 @@ package
 		
 		// Entities List
 		public static var treeList:Array = new Array();
+		
+		// Wife List
+		public static const wifeList:Array = ['Monkey', 'Bird', 'Robot'];
 	}
 }
