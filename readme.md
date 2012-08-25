@@ -6,6 +6,10 @@ Version History
   <tr>
     <th>Version</th><th>Date</th><th>Time</th><th>Changelog</th>
   </tr>
+    
+  <tr>
+    <td>0.7.10</td><td>08/25/12</td><td>15:49</td><td>[Fixed]Player Base Stats <br/>[Added] Teleport Ability</td>
+  </tr>
   
   <tr>
     <td>0.6.24</td><td>08/25/12</td><td>15:18</td><td>[Added] Player Base Stats <br/> [Added] Grant abilities via mating <br/>[Added] Flying Ability</td>

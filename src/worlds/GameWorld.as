@@ -13,8 +13,6 @@ package worlds
 	 */
 	public class GameWorld extends World 
 	{
-	
-		
 		public function GameWorld() 
 		{
 			
@@ -40,7 +38,6 @@ package worlds
 		override public function update():void 
 		{
 			super.update();
-			
 		}
 	}
 

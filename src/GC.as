@@ -36,7 +36,7 @@ package
 		// MainMenu Items
 		public static const MENU_COLOR:String = "0x444444";
 		public static const MENU_COLOR_ACTIVE:String = "0xff6100"; 
-		public static const MENU_ITEMS:Array = ["Play Game", "About Game", "Game Options"];
+		public static const MENU_ITEMS:Array = ["Play Game", "About Game"];
 		
 		// Game Constants
 		public static var player:Player;
@@ -49,6 +49,6 @@ package
 		public static var treeList:Array = new Array();
 		
 		// Wife List
-		public static const wifeList:Array = ['Monkey', 'Bird', 'Robot'];
+		public static const wifeList:Array = ['Frog', 'Bird', 'Robot'];
 	}
 }

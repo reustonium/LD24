@@ -16,10 +16,15 @@ package actors
 	{
 		protected var playerImage:Image;
 		protected var speed:Point = new Point(0, 0);
-		protected var jumpPower:Number = -3;
-		protected var maxSpeed:Number = 3;
+		
+		// Player Abilities
+		protected var jumpPower:Number = -2;
+		protected var maxSpeed:Number = 2;
 		protected var canFly:Boolean = false;
-		protected var flyTime:Number = 1;
+		protected var canTele:Boolean = false;
+		
+		// Player Timers
+		protected var flyTime:Number = 0;
 		protected var flyTimer:Number = 0;
 		
 		public function Player(x:int, y:int) 
@@ -31,6 +36,7 @@ package actors
 			Input.define('moveRight', Key.RIGHT, Key.D);
 			Input.define('jump', Key.W, Key.UP);
 			Input.define('mate', Key.M);
+			Input.define('tele', Key.T);
 		}
 		
 		override public function update():void 
@@ -44,16 +50,7 @@ package actors
 			}
 			
 			// Check for player left/right movement
-			if (Input.check('moveLeft')) 
-			{ 
-				speed.x -= GC.moveSpeed; 
-				if (speed.x < -maxSpeed) { speed.x = -maxSpeed;}
-			}
-			if (Input.check('moveRight')) 
-			{ 
-				speed.x += GC.moveSpeed; 
-				if (speed.x > maxSpeed) { speed.x = maxSpeed;}
-			}
+			checkMove();
 			
 			// Impose Gravity if not on floor
 			if (!collide('floor', x, y + 1)) { speed.y += GC.gravity; }
@@ -75,13 +72,59 @@ package actors
 				}
 				
 				if (collide('floor', x, y + 1)) { flyTimer = 0;}
-				
 			}
 			
 			// Ground Friction
 			if (!Input.check('moveLeft') && !Input.check('moveRight')) { speed.x = 0; }
 			
+			// Teleport
+			if (canTele)
+			{
+				if (Input.pressed('tele'))
+				{
+					x = ((FP.width-400) * FP.random) + 200;
+					y = ((FP.height-300) * FP.random) + 50;
+				}
+			}
 			// Move Player
+			movePlayer();
+			
+			// Scroll Backdrops and Entities
+			if (x > FP.width - 200 || x < 100)
+			{
+				// Backdrops and Player
+				GC.sky.x -= speed.x;
+				GC.ground.x -= speed.x;
+				x -= speed.x;
+			
+				for each(var tree:Tree in GC.treeList){ tree.x -= speed.x; }
+			}
+		}
+		
+		public function mated(mate:String):void
+		{
+			trace(mate);
+			if (mate == 'Frog') { jumpPower -= 4; }
+			if (mate == 'Bird') { canFly = true; flyTime+=0.5}
+			if (mate == 'Robot') { canTele = true; }
+		}
+		
+		public function checkMove():void
+		{
+			if (Input.check('moveLeft')) 
+			{ 
+				speed.x -= GC.moveSpeed; 
+				if (speed.x < -maxSpeed) { speed.x = -maxSpeed;}
+			}
+			if (Input.check('moveRight')) 
+			{ 
+				speed.x += GC.moveSpeed; 
+				if (speed.x > maxSpeed) { speed.x = maxSpeed;}
+			}
+		}
+		
+		public function movePlayer():void
+		{
 			for (var i:int = 0; i < Math.abs(speed.x); i ++)
 			{
 				if (!collide("floor", x + FP.sign(speed.x), y)) { x += FP.sign(speed.x); }
@@ -93,26 +136,6 @@ package actors
 				if (!collide("floor", x, y + FP.sign(speed.y))) { y += FP.sign(speed.y); }
 				else { speed.y = 0; }
 			}
-			
-			// Scroll Backdrops and Entities
-			if (x > FP.width - 200 || x < 100)
-			{
-				// Backdrops and Player
-				GC.sky.x -= speed.x;
-				GC.ground.x -= speed.x;
-				x -= speed.x;
-				
-				trace(GC.treeList);
-				
-				for each(var tree:Tree in GC.treeList){ tree.x -= speed.x; }
-			}
-		}
-		
-		public function mated(mate:String):void
-		{
-			trace(mate);
-			if (mate == 'Monkey') { jumpPower -= 4; }
-			if (mate == 'Bird') { canFly = true; } 
 		}
 	}
 }
