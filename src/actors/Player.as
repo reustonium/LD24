@@ -15,6 +15,8 @@ package actors
 	{
 		protected var playerImage:Image;
 		protected var speed:Point = new Point(0, 0);
+		protected var jumpPower:Number = -10;
+		protected var maxSpeed:Number = 3;
 		
 		public function Player(x:int, y:int) 
 		{
@@ -23,6 +25,7 @@ package actors
 			
 			Input.define('moveLeft', Key.LEFT, Key.A);
 			Input.define('moveRight', Key.RIGHT, Key.D);
+			Input.define('jump', Key.W, Key.UP);
 		}
 		
 		override public function update():void 
@@ -30,24 +33,39 @@ package actors
 			super.update();
 			
 			// Check for player left/right movement
-			if (Input.check('moveLeft')) { speed.x -= 0.25; }
-			if (Input.check('moveRight')) { speed.x += 0.25; }
+			if (Input.check('moveLeft')) 
+			{ 
+				speed.x -= GC.moveSpeed; 
+				if (speed.x < -maxSpeed) { speed.x = -maxSpeed;}
+			}
+			if (Input.check('moveRight')) 
+			{ 
+				speed.x += GC.moveSpeed; 
+				if (speed.x > maxSpeed) { speed.x = maxSpeed;}
+			}
 			
 			// Impose Gravity if not on floor
 			if (!collide('floor', x, y + 1)) { speed.y += GC.gravity; }
+			
+			// Allow Jumping only if on the floor
+			if (collide('floor', x, y + 1))
+			{
+				if (Input.check('jump')) { speed.y = jumpPower;}
+			}
 			
 			// Ground Friction
 			if (!Input.check('moveLeft') && !Input.check('moveRight')) { speed.x = 0; }
 			
 			// Move Player
-			for (var i:int; i < Math.abs(speed.x); i++)
+			for (var i:int = 0; i < Math.abs(speed.x); i ++)
 			{
-				if (!collide('floor', x + FP.sign(speed.x), y)) { x += FP.sign(speed.x); }
+				if (!collide("floor", x + FP.sign(speed.x), y)) { x += FP.sign(speed.x); }
 				else { speed.x = 0; }
 			}
-			for (var i:int; i < Math.abs(speed.y); i++)
+			
+			for (i = 0; i < Math.abs(speed.y); i ++)
 			{
-				if (!collide('floor', x, FP.sign(speed.y) + y)) { y += FP.sign(speed.y); }
+				if (!collide("floor", x, y + FP.sign(speed.y))) { y += FP.sign(speed.y); }
 				else { speed.y = 0; }
 			}
 		}

@@ -36,6 +36,7 @@ package
 		// Game Constants
 		public static var sky:Sky;
 		public static var ground:Ground;
-		public static var gravity:Number = 0.2;
+		public static const gravity:Number = 0.5;
+		public static const moveSpeed:Number = 0.15;
 	}
 }

@@ -17,5 +17,8 @@ Version History
   </tr>
     <tr>
     <td>0.1.27</td><td>08/25/12</td><td>01:10</td><td>[Fixed] Menu BG Screen <br/> [Added] Game World Class and basic Game World elements. <br/> [Added] Basic Player Motion.</td>
-  </tr
+  </tr>
+    <tr>
+    <td>0.2.10</td><td>08/25/12</td><td>11:02</td><td>[Added] Jumping Feature <br/> [Fixed] Moving mid jump caused weird skywalking [Fixed] Player speeds more realistic</td>
+  </tr>
 </table>
