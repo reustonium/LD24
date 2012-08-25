@@ -68,8 +68,14 @@ package actors
 				if (!collide("floor", x, y + FP.sign(speed.y))) { y += FP.sign(speed.y); }
 				else { speed.y = 0; }
 			}
+			
+			// Scroll Backdrops
+			if (x > FP.width - 200 || x < 100)
+			{
+				GC.sky.x -= speed.x;
+				GC.ground.x -= speed.x;
+				x -= speed.x;
+			}
 		}
-		
 	}
-
 }

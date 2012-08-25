@@ -24,7 +24,7 @@ package worlds
 			super.begin();
 			add(new Entity(0, 0, GC.sky = new Sky()));
 			add(new Entity(0, FP.height - 50, GC.ground = new Ground()));
-			add(new Player(30, 300));
+			add(new Player(130, 300));
 			add(new Floor(0, FP.height - 50));
 		}
 		
