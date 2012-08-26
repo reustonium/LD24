@@ -5,6 +5,7 @@ package worlds
 	import net.flashpunk.Entity;
 	import net.flashpunk.FP;
 	import net.flashpunk.graphics.Image;
+	import net.flashpunk.graphics.Text;
 	import net.flashpunk.World;
 	
 	/**
@@ -51,6 +52,15 @@ package worlds
 				add(vol);
 				trace('added volcano');
 			}
+			
+			// Add Message
+			GC.messageText = new Text('hello', 0, 0, 640, 100);
+			GC.messageText.font = 'primma';
+			GC.messageText.size = 36;
+			GC.messageText.text = "hello"
+			GC.message.graphic = GC.messageText;
+			add(GC.message);
+			GC.message.visible = false;
 		}
 		
 		override public function update():void 

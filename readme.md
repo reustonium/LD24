@@ -8,6 +8,10 @@ Version History
   </tr>
 
   <tr>
+    <td>0.10.14</td><td>08/25/12</td><td>20:50</td><td>[Added] On-Screen Messages <br/>[Added] Game Restart upon death</td>
+  </tr>
+  
+  <tr>
     <td>0.9.1</td><td>08/25/12</td><td>20:50</td><td>[Added] Player Death Check</td>
   </tr>
   

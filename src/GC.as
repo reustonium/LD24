@@ -2,6 +2,7 @@ package
 {
 	import actors.Player;
 	import net.flashpunk.Entity;
+	import net.flashpunk.FP;
 	import net.flashpunk.graphics.Text;
 	import net.flashpunk.utils.Data;
 	import worlds.Floor;
@@ -53,6 +54,8 @@ package
 		// Entities List
 		public static var treeList:Array = new Array();
 		public static var volcanoList:Array = new Array();
+		public static var message:Entity = new Entity(FP.halfWidth, FP.halfHeight);
+		public static var messageText:Text;
 		
 		// Wife List
 		public static const wifeList:Array = ['Frog', 'Bird', 'Robot'];

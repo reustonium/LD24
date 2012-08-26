@@ -8,6 +8,7 @@ package actors
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
 	import worlds.Floor;
+	import worlds.GameWorld;
 	
 	/**
 	 * @project LD24
@@ -27,6 +28,8 @@ package actors
 		// Player Timers
 		protected var flyTime:Number = 0;
 		protected var flyTimer:Number = 0;
+		protected var messageSleep:Number = 3;
+		protected var messageSleepTimer:Number = 0;
 		
 		public function Player(x:int, y:int) 
 		{
@@ -149,7 +152,16 @@ package actors
 		
 		public function checkDeath():void
 		{
-			if (y > FP.screen.height) { trace('you dead suckka');}
+			if (y > FP.screen.height) 
+			{ 
+				GC.messageText.text = 'You are super dead'; 
+				GC.message.visible = true;
+				GC.message.width = 200;
+				
+				messageSleepTimer += FP.elapsed;
+				
+				if(messageSleepTimer>messageSleep) { FP.world = new GameWorld(); }
+			}
 		}
 	}
 }
