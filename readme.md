@@ -8,6 +8,10 @@ Version History
   </tr>
 
   <tr>
+    <td>0.9.1</td><td>08/25/12</td><td>20:50</td><td>[Added] Player Death Check</td>
+  </tr>
+  
+  <tr>
     <td>0.8.39</td><td>08/25/12</td><td>20:46</td><td>[Added] World Map <br/>[Added] Volcano's <br/>[Added] More Tree's</td>
   </tr>
   

@@ -105,6 +105,9 @@ package actors
 				for each(var tree:Tree in GC.treeList) { tree.x -= speed.x; }
 				for each(var vol:Entity in GC.volcanoList) { vol.x -= speed.x; }
 			}
+			
+			// Check for Death
+			checkDeath();
 		}
 		
 		public function mated(mate:String):void
@@ -142,6 +145,11 @@ package actors
 				if (!collide("floor", x, y + FP.sign(speed.y))) { y += FP.sign(speed.y); }
 				else { speed.y = 0; }
 			}
+		}
+		
+		public function checkDeath():void
+		{
+			if (y > FP.screen.height) { trace('you dead suckka');}
 		}
 	}
 }
