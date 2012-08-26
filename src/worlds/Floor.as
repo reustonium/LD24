@@ -9,10 +9,10 @@ package worlds
 	public class Floor extends Entity 
 	{
 		
-		public function Floor(x:int, y:int) 
+		public function Floor(x:int, y:int, len:int, hei:int) 
 		{
 			super(x, y);
-			setHitbox(640, 50);
+			setHitbox(len, hei);
 			type = 'floor';
 		}
 		

@@ -7,6 +7,7 @@ package actors
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
+	import worlds.Floor;
 	
 	/**
 	 * @project LD24
@@ -19,7 +20,7 @@ package actors
 		
 		// Player Abilities
 		protected var jumpPower:Number = -2;
-		protected var maxSpeed:Number = 2;
+		protected var maxSpeed:Number = 3;
 		protected var canFly:Boolean = false;
 		protected var canTele:Boolean = false;
 		
@@ -91,13 +92,18 @@ package actors
 			
 			// Scroll Backdrops and Entities
 			if (x > FP.width - 200 || x < 100)
+
 			{
 				// Backdrops and Player
 				GC.sky.x -= speed.x;
-				GC.ground.x -= speed.x;
 				x -= speed.x;
+				for each (var floor:Floor in GC.floorList)
+				{
+					floor.x -= speed.x;
+				}
 			
-				for each(var tree:Tree in GC.treeList){ tree.x -= speed.x; }
+				for each(var tree:Tree in GC.treeList) { tree.x -= speed.x; }
+				for each(var vol:Entity in GC.volcanoList) { vol.x -= speed.x; }
 			}
 		}
 		

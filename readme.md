@@ -6,7 +6,11 @@ Version History
   <tr>
     <th>Version</th><th>Date</th><th>Time</th><th>Changelog</th>
   </tr>
-    
+
+  <tr>
+    <td>0.8.39</td><td>08/25/12</td><td>20:46</td><td>[Added] World Map <br/>[Added] Volcano's <br/>[Added] More Tree's</td>
+  </tr>
+  
   <tr>
     <td>0.7.10</td><td>08/25/12</td><td>15:49</td><td>[Fixed]Player Base Stats <br/>[Added] Teleport Ability</td>
   </tr>

@@ -4,6 +4,7 @@ package
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Text;
 	import net.flashpunk.utils.Data;
+	import worlds.Floor;
 	import worlds.Ground;
 	import worlds.Sky;
 	/**
@@ -28,6 +29,10 @@ package
 		public static const IMAGE_TREE:Class;
 		[Embed(source = 'assets/mm_bg.png')] 
 		public static const IMAGE_MM_BG:Class;
+		[Embed(source = 'assets/gameworld.png')] 
+		public static const IMAGE_WORLD:Class;
+		[Embed(source = 'assets/volcano.png')] 
+		public static const IMAGE_VOLCANO:Class;
 		
 		// Fonts
 		[Embed(source = 'assets/primma.ttf', embedAsCFF = "false", fontFamily = 'primma')]
@@ -41,12 +46,13 @@ package
 		// Game Constants
 		public static var player:Player;
 		public static var sky:Sky;
-		public static var ground:Ground;
+		public static var floorList:Array = new Array();
 		public static const gravity:Number = 0.5;
 		public static const moveSpeed:Number = 0.15;
 		
 		// Entities List
 		public static var treeList:Array = new Array();
+		public static var volcanoList:Array = new Array();
 		
 		// Wife List
 		public static const wifeList:Array = ['Frog', 'Bird', 'Robot'];

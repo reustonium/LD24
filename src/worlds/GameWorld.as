@@ -21,17 +21,35 @@ package worlds
 		override public function begin():void 
 		{
 			super.begin();
-			add(new Entity(0, 0, GC.sky = new Sky()));
-			add(new Entity(0, FP.height - 50, GC.ground = new Ground()));
+			add(GC.sky = new Sky());
 			add(GC.player = new Player(130, 100));
-			add(new Floor(0, FP.height - 50));
+			
+			// Make Floors
+			GC.floorList.push(new Floor(0, FP.height - 50, 1550, 50));
+			GC.floorList.push(new Floor(1760, FP.height - 50, 120, 50));
+			GC.floorList.push(new Floor(1950, FP.height - 50, 4450, 50));
+			for each (var floor:Floor in GC.floorList)
+			{
+				add(floor);
+			}
 			
 			// Make Tree's
-			for (var i:int; i < 5; i++)
+			for (var i:int = 0 ; i < 20; i++)
 			{
-				var smallTree:Tree = new Tree(100 + 200*i, FP.height - 50 - 64);
+				var smallTree:Tree = new Tree(100 + FP.random * 5400, FP.height - 60 - 64);
 				GC.treeList.push(smallTree);
 				add(smallTree);
+			}
+			
+			// Add Volcano
+			for (var j:int = 0; j < 5; j++)
+			{
+				var vol:Entity = new Entity(1000 + FP.random * 1000 * j, FP.height -60 -240, new Image(GC.IMAGE_VOLCANO));
+				vol.setHitbox(240, 240, 0, 0);
+				vol.type = 'floor';
+				GC.volcanoList.push(vol);
+				add(vol);
+				trace('added volcano');
 			}
 		}
 		
